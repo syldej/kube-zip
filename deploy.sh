@@ -24,7 +24,7 @@ function deployNexus(){
 	kubectl delete -f nexus/deployment
 	kubectl delete -f nexus/service
 	kubectl delete -f nexus/pvc
-	 
+	 kubectl delete -n nexus $(kubect get pods -o name -n nexus) --force
 	kubectl delete ns nexus
 	 
 	kubectl create ns nexus
