@@ -1,0 +1,4 @@
+kubectl apply -f pv
+kubectl apply -f pvc
+kubectl apply -f deployment
+kubectl apply -f service

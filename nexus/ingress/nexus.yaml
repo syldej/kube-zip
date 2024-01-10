@@ -1,0 +1,48 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nexus
+  namespace: nexus
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nexus
+            port:
+              number: 8081
+    host: nexus.ebrc.com
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nexus
+            port:
+              number: 8082
+    host: private-registry-nexus.ebrc.com
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nexus
+            port:
+              number: 5000
+    host: registry-nexus.ebrc.com
+  tls:
+  - hosts:
+    - private-registry-nexus.ebrc.com
+    secretName: apps
+  - hosts:
+    - registry-nexus.ebrc.com
+    secretName: apps
+  - hosts:
+    - nexus.ebrc.com
+    secretName: apps
+

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+   
+  labels:
+    app: nexus
+  name: nexus
+  namespace: nexus
+spec:
+  serviceName: nexus
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: nexus
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nexus
+    spec:
+      containers:
+      - image: sonatype/nexus3:3.64.0
+        env:
+        - name: TZ
+          value: "Europe/Luxembourg"
+        imagePullPolicy: IfNotPresent
+        name: nexus3
+       
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /nexus-data
+          name: nexus-volume
+         
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: nexus-volume
+        persistentVolumeClaim:
+          claimName: nexus
+       

@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  
+  labels:
+    app: sonarqube
+  name: sonarqube
+  namespace: sonarqube
+spec:  
+  serviceName: sonarqube
+
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: sonarqube
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: sonarqube
+    spec:
+      containers:
+      - image: sonarqube:9.9.3-community
+        env:
+        - name: TZ
+          value: "Europe/Luxembourg"
+        imagePullPolicy: IfNotPresent
+        name: sonarqube
+        
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /opt/sonarqube/data
+          name: sonarqube-volume
+          subPath: data
+        - mountPath: /opt/sonarqube/extensions
+          name: sonarqube-volume
+          subPath: extensions
+        - mountPath: /opt/sonarqube/logs
+          name: sonarqube-volume
+          subPath: logs
+        - mountPath: /opt/sonarqube/conf
+          name: sonarqube-cm
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: regcred
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: sonarqube-volume
+        persistentVolumeClaim:
+          claimName: sonarqube
+      - configMap:
+          defaultMode: 420
+          name: sonarqube
+        name: sonarqube-cm

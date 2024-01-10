@@ -1,0 +1,42 @@
+apiVersion: v1
+data:
+  sonar.properties: |
+    sonar.jdbc.username=postgres
+    sonar.jdbc.password=OcQBJrUEvCgbId65qoAMdqDkT91t7Sk3wq
+    sonar.jdbc.url=jdbc:postgresql://postgres.postgres:5432/sonarqube
+    sonar.core.serverBaseURL=https://sonarqube.ebrc.com
+  wrapper.conf: |
+    wrapper.java.command=java
+    wrapper.java.additional.1=-Dsonar.wrapped=true
+    wrapper.java.additional.2=-Djava.awt.headless=true
+    wrapper.java.mainclass=org.tanukisoftware.wrapper.WrapperSimpleApp
+    wrapper.java.classpath.1=../../lib/jsw/*.jar
+    wrapper.java.classpath.2=../../lib/common/*.jar
+    wrapper.java.classpath.3=../../lib/*.jar
+    wrapper.java.library.path.1=./lib
+    wrapper.app.parameter.1=org.sonar.application.App
+    wrapper.java.initmemory=8
+    wrapper.java.maxmemory=32
+    wrapper.console.format=PM
+    wrapper.console.loglevel=INFO
+    wrapper.logfile.format=M
+    wrapper.logfile.loglevel=INFO
+    wrapper.logfile.rollmode=DATE
+    wrapper.logfile=../../logs/sonar-YYYYMMDD.log
+    wrapper.syslog.loglevel=NONE
+    wrapper.console.title=SonarQube
+    wrapper.single_invocation=true
+    wrapper.ntservice.name=SonarQube
+    wrapper.ntservice.displayname=SonarQube
+    wrapper.ntservice.description=SonarQube
+    wrapper.ntservice.dependency.1=
+    wrapper.ntservice.starttype=AUTO_START
+    wrapper.ntservice.interactive=false
+    wrapper.disable_restarts=TRUE
+    wrapper.ping.timeout=0
+    wrapper.shutdown.timeout=0
+    wrapper.jvm_exit.timeout=0
+kind: ConfigMap
+metadata:
+  name: sonarqube
+  namespace: sonarqube
