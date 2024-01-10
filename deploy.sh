@@ -34,6 +34,6 @@ function deployNexus(){
 	kubectl apply -f nexus/pvc
 	kubectl apply -f nexus/deployment
 	kubectl apply -f nexus/service
-	 
+	
 }
 deployNexus
