@@ -4,10 +4,8 @@ metadata:
   name: nexus
   namespace: nexus
 spec:
-  selector:
-    matchLabels:
-      type: "nexus"
-  #storageClassName: manual
+
+  storageClassName: default
   accessModes:
     - ReadWriteOnce
   resources:

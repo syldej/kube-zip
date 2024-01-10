@@ -22,4 +22,4 @@ spec:
   selector:
     app: nexus
   sessionAffinity: None
-  type: ClusterIP
+  type: LoadBalancer
