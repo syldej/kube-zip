@@ -1,5 +1,3 @@
-script.zip
-
 kubectl delete ns postgres
 kubectl delete ns sonarqube
 kubectl create ns postgres
