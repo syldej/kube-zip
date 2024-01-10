@@ -35,4 +35,5 @@ function deployNexus(){
 	kubectl apply -f nexus/service
 	
 }
+deploySonar
 deployNexus
