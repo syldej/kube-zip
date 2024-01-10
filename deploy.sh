@@ -20,3 +20,4 @@ kubectl apply -f sonarqube/deployment
 kubectl apply -f sonarqube/service
 
 
+
