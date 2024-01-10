@@ -25,8 +25,6 @@ function deployNexus(){
 	kubectl delete -f nexus/service
 	kubectl delete -f nexus/pvc
 	 
-
-
 	kubectl delete ns nexus
 	 
 	kubectl create ns nexus
