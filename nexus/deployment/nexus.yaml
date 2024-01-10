@@ -22,7 +22,7 @@ spec:
       initContainers:
         - name: init-container
           image: busybox:1.31.1
-          command: ["chown", "200:200", "/nexus-data"]
+          command: ["chown", "-Rv" ,"200:200", "/nexus-data"]
           volumeMounts:
             - name: nexus-volume
               mountPath: /nexus-data
