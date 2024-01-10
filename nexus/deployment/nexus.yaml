@@ -22,10 +22,11 @@ spec:
       initContainers:
         - name: init-container
           image: busybox:1.31.1
-          command: ["chmod", "-R" ,"777", "/nexus-data"]
+          command: ["chown", "-R" ,"200:200", "/nexus-data"]
           volumeMounts:
             - name: nexus-volume
               mountPath: /nexus-data
+              subPath: nexus
       containers:
       - image: sonatype/nexus3:3.64.0
         env:
