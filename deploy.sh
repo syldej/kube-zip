@@ -19,5 +19,3 @@ kubectl apply -f sonarqube/pvc
 kubectl apply -f sonarqube/deployment
 kubectl apply -f sonarqube/service
 
-
-
