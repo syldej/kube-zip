@@ -20,6 +20,8 @@ spec:
       labels:
         app: sonarqube
     spec:
+      securityContext:
+        fsGroup: 1000
       initContainers:
       - name: init
         image: busybox
