@@ -34,7 +34,7 @@ spec:
           privileged: true
 
       containers:
-      - image: sonarqube:9.9.3-community
+      - image: sonarqube:9.0.0-community
         env:
         - name: TZ
           value: "Europe/Luxembourg"
