@@ -32,8 +32,8 @@ function deployNexus(){
 	kubectl create ns nexus
 	 
 	kubectl apply -f nexus/pvc
-	kubectl apply -f postgres/deployment
-	kubectl apply -f postgres/service
+	kubectl apply -f nexus/deployment
+	kubectl apply -f nexus/service
 	 
 }
 deployNexus
