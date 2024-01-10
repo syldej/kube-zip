@@ -4,9 +4,7 @@ metadata:
   name: sonarqube
   namespace: sonarqube
 spec:
-  selector:
-    matchLabels:
-      type: "sonarqube"
+  storageClassName: default
   accessModes:
     - ReadWriteOnce
   resources:
