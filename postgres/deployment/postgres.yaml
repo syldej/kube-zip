@@ -26,6 +26,10 @@ spec:
           value: "Europe/Luxembourg"
         - name: POSTGRES_PASSWORD
           value: OcQBJrUEvCgbId65qoAMdqDkT91t7Sk3wq 
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_DB
+          value: sonarqube
         image: postgres:13.3
 
         imagePullPolicy: IfNotPresent
