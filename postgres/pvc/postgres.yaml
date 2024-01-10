@@ -4,11 +4,9 @@ metadata:
   name: postgres
   namespace: postgres
 spec:
-  selector:
-    matchLabels:
-      type: "postgres"
   accessModes:
     - ReadWriteOnce
+  storageClass: default
   resources:
     requests:
       storage: 10Gi
