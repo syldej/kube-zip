@@ -4,7 +4,7 @@ metadata:
   name: sonarqube
   namespace: sonarqube
 spec:
-  storageClassName: default
+  storageClassName: azurefile
   accessModes:
     - ReadWriteOnce
   resources:
