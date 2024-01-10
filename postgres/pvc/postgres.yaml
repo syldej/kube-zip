@@ -7,7 +7,6 @@ spec:
   selector:
     matchLabels:
       type: "postgres"
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
