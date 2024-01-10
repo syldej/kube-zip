@@ -20,7 +20,7 @@ spec:
         app: nexus
     spec:
       securityContext:
-        fsGroup: 200
+        fsGroup: 1000
       containers:
       - image: sonatype/nexus3:3.64.0
         env:
